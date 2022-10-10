@@ -1,8 +1,8 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "floodgate-minestom"
-include("minestom")
-include("core")
+include(":core")
+include(":minestom")
 
 pluginManagement {
     repositories {
@@ -17,10 +17,9 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        mavenCentral()
-        maven("https://repo.opencollab.dev/main/") // geyser etc
-        maven("https://jitpack.io") // fixes issue with Cloudburst Protocol that geyser depends on
+        mavenCentral() // minestom
+        maven("https://repo.opencollab.dev/main/") // floodgate
+        maven("https://jitpack.io") // minestom
         maven("https://libraries.minecraft.net/") // brigadier
     }
 }
-include("minestom")
