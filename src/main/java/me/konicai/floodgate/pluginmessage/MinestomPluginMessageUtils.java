@@ -1,4 +1,4 @@
-package me.konicai.floodgate;
+package me.konicai.floodgate.pluginmessage;
 
 import net.minestom.server.MinecraftServer;
 import org.geysermc.floodgate.platform.pluginmessage.PluginMessageUtils;

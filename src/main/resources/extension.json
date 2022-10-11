@@ -1,5 +1,5 @@
 {
   "entrypoint": "me.konicai.floodgate.FloodgateMinestom",
-  "name": "floodgate",
-  "version": "1.0.0"
+  "name": "${id}",
+  "version": "${version}"
 }

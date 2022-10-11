@@ -1,8 +1,6 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "floodgate-minestom"
-include(":core")
-include(":minestom")
 
 pluginManagement {
     repositories {

@@ -1,65 +1,83 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     java
     `java-library`
     `maven-publish`
     id("net.kyori.indra.git") // used for getting branch/commit info
+    id("com.github.johnrengelman.shadow")
     id("idea") // used to download sources and documentation
 }
 
-allprojects{
-    apply(plugin = "java")
-    apply(plugin = "java-library")
-    apply(plugin = "net.kyori.indra.git")
+group = "me.konicai"
+version = "1.0.0"
 
-    group = "me.konicai"
-    version = "1.0.0"
-
-    tasks.withType<JavaCompile> {
+tasks {
+    withType<JavaCompile> {
         options.encoding = "UTF-8"
         options.release.set(17)
     }
 
-    tasks.withType<Test>().configureEach {
+    withType<Test>().configureEach {
         useJUnitPlatform()
         // Disable creating of test report files
         reports.html.required.set(false)
         reports.junitXml.required.set(false)
     }
 
-    tasks.named("build") {
-        dependsOn(tasks.named<Test>("test"))
-    }
+    processResources {
+        val build = System.getenv("BUILD_NUMBER") ?: "??"
+        val branch = System.getenv("GIT_BRANCH") ?: indraGit.branchName() ?: "local/dev";
+        val commit = indraGit.commit()?.name?.substring(0, 7)
+        val version = "b${build}-${branch}-${commit}"
 
-    tasks.processResources {
         expand(
-            "project_description" to "Bedrock Edition forms, inventory menus, and more.",
-            "project_url" to "https://github.com/kejonaMC/CrossplatForms",
-            "project_version" to project.version,
-
-            // indra branch works locally, environment variable should work on jenkins.
-            "git_branch" to (indraGit.branchName() ?: System.getenv("GIT_BRANCH")),
-            "git_commit" to (indraGit.commit()?.abbreviate(7)?.name() ?: "UNKNOWN"),
-            "build_number" to (System.getenv("BUILD_NUMBER") ?: "UNKNOWN")
+            "id" to "floodgate",
+            "version" to version,
+            "url" to "https://github.com/Konicai/floodgate-api-minestom",
+            "author" to "konicai"
         )
     }
 
-    // disable javadocs
-    tasks.withType<Javadoc>().all { enabled = false }
+    withType<Javadoc>().all { enabled = false }
 }
 
-subprojects {
-    dependencies {
-        testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
-        testCompileOnly("org.projectlombok:lombok:1.18.24")
-        testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
+tasks.named("build") {
+    dependsOn(tasks.named<Test>("test"))
+    dependsOn(tasks.named("shadowJar"))
+}
 
-        annotationProcessor("org.projectlombok:lombok:1.18.22")
-        compileOnly("org.projectlombok:lombok:1.18.24")
-        compileOnly("com.google.code.findbugs:jsr305:3.0.2") // nullability annotations
+dependencies {
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
+    testCompileOnly("org.projectlombok:lombok:1.18.24")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
+
+    annotationProcessor("org.projectlombok:lombok:1.18.22")
+
+    api("org.geysermc.floodgate:api:2.2.0-SNAPSHOT")
+    api("org.geysermc.floodgate:core:2.2.0-SNAPSHOT")
+    api("io.netty", "netty-transport", "4.1.49.Final")
+    api("io.netty", "netty-codec", "4.1.49.Final")
+
+    compileOnly("com.github.Minestom:Minestom:-SNAPSHOT")
+    compileOnly("org.apache.logging.log4j", "log4j-core", "2.11.2")
+    compileOnly("org.projectlombok:lombok:1.18.24")
+    compileOnly("com.google.code.findbugs:jsr305:3.0.2") // nullability annotations
+}
+
+tasks.withType<ShadowJar> {
+    archiveFileName.set("floodgate-minestom.jar")
+
+    dependencies {
+        shadow {
+            fun relocate(s1: String, s2: String) {
+                relocate(s1, "me.konicai.floodgate.shaded." + s2)
+            }
+        }
+
+        // todo: exclusions and relocations. instead of relocations, maybe use Minestom's external dependency system
     }
 }
-
 
 publishing {
     publications.create<MavenPublication>("maven") {

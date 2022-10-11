@@ -7,7 +7,7 @@ public class MinestomPlatformUtils extends PlatformUtils {
 
     @Override
     public AuthType authType() {
-        return AuthType.PROXIED;
+        return AuthType.PROXIED; //fixme
     }
 
     @Override
