@@ -72,7 +72,7 @@ public class MinestomPlatformModule extends AbstractModule {
     @Provides
     @Named("implementationName")
     public String implementationName() {
-        return "Velocity";
+        return "Minestom";
     }
     /*
     Others
