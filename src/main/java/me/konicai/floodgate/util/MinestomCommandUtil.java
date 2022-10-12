@@ -2,6 +2,7 @@ package me.konicai.floodgate.util;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.adventure.MinestomAdventure;
 import net.minestom.server.adventure.audience.Audiences;
@@ -22,6 +23,13 @@ import java.util.UUID;
 
 @Singleton
 public class MinestomCommandUtil extends CommandUtil {
+
+    private static final LegacyComponentSerializer LEGACY_SERIALIZER = LegacyComponentSerializer.builder()
+        .extractUrls()
+        .hexColors()
+        .character(LegacyComponentSerializer.SECTION_CHAR)
+        .build();
+
     private final UserAudience console = new ConsoleAudience(Audiences.console(), this);
 
     @Inject
@@ -80,13 +88,13 @@ public class MinestomCommandUtil extends CommandUtil {
 
     @Override
     public void sendMessage(Object source, String message) {
-        ((CommandSender) source).sendMessage(message);
+        ((CommandSender) source).sendMessage(LEGACY_SERIALIZER.deserialize(message));
     }
 
     @Override
     public void kickPlayer(Object source, String message) {
         if (source instanceof Player player) {
-            player.kick(message);
+            player.kick(LEGACY_SERIALIZER.deserialize(message));
         }
     }
 }
