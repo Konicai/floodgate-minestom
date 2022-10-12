@@ -16,6 +16,6 @@ public class MinestomInjector extends CommonPlatformInjector {
 
     @Override
     public boolean isInjected() {
-        return false;
+        return true;
     }
 }

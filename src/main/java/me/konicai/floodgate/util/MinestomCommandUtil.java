@@ -1,6 +1,7 @@
 package me.konicai.floodgate.util;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.adventure.MinestomAdventure;
 import net.minestom.server.adventure.audience.Audiences;
@@ -19,6 +20,7 @@ import java.util.Collection;
 import java.util.Locale;
 import java.util.UUID;
 
+@Singleton
 public class MinestomCommandUtil extends CommandUtil {
     private final UserAudience console = new ConsoleAudience(Audiences.console(), this);
 
