@@ -1,5 +1,9 @@
 {
-  "entrypoint": "me.konicai.floodgate.FloodgateMinestom",
-  "name": "${id}",
-  "version": "${version}"
+  "entrypoint": "org.hypejet.floodgate.FloodgateMinestom",
+  "name": "floodgate",
+  "version": "${version}",
+  "authors": [
+    "konicai",
+    "HEROOSTECH"
+  ]
 }

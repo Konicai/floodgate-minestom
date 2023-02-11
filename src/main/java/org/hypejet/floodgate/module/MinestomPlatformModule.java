@@ -1,4 +1,4 @@
-package me.konicai.floodgate.module;
+package org.hypejet.floodgate.module;
 
 import cloud.commandframework.CommandManager;
 import cloud.commandframework.execution.CommandExecutionCoordinator;
@@ -8,13 +8,13 @@ import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import io.github.openminigameserver.cloudminestom.MinestomCommandManager;
 import lombok.RequiredArgsConstructor;
-import me.konicai.floodgate.injector.minestom.MinestomInjector;
-import me.konicai.floodgate.logger.Slf4jFloodgateLogger;
-import me.konicai.floodgate.pluginmessage.MinestomPluginMessageRegistration;
-import me.konicai.floodgate.pluginmessage.MinestomPluginMessageUtils;
-import me.konicai.floodgate.pluginmessage.MinestomSkinApplier;
-import me.konicai.floodgate.util.MinestomCommandUtil;
-import me.konicai.floodgate.util.MinestomPlatformUtils;
+import org.hypejet.floodgate.injector.minestom.MinestomInjector;
+import org.hypejet.floodgate.logger.Slf4jFloodgateLogger;
+import org.hypejet.floodgate.pluginmessage.MinestomPluginMessageRegistration;
+import org.hypejet.floodgate.pluginmessage.MinestomPluginMessageUtils;
+import org.hypejet.floodgate.pluginmessage.MinestomSkinApplier;
+import org.hypejet.floodgate.util.MinestomCommandUtil;
+import org.hypejet.floodgate.util.MinestomPlatformUtils;
 import net.minestom.server.command.CommandSender;
 import net.minestom.server.event.EventListener;
 import net.minestom.server.extensions.Extension;

@@ -1,4 +1,4 @@
-package me.konicai.floodgate;
+package org.hypejet.floodgate;
 
 public @interface EntryPoint {
 }

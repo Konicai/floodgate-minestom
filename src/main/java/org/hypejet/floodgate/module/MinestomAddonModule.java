@@ -1,9 +1,9 @@
-package me.konicai.floodgate.module;
+package org.hypejet.floodgate.module;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 import com.google.inject.multibindings.ProvidesIntoSet;
-import me.konicai.floodgate.addon.data.MinestomDataAddon;
+import org.hypejet.floodgate.addon.data.MinestomDataAddon;
 import org.geysermc.floodgate.addon.AddonManagerAddon;
 import org.geysermc.floodgate.addon.DebugAddon;
 import org.geysermc.floodgate.addon.PacketHandlerAddon;

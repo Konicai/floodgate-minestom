@@ -1,4 +1,4 @@
-package me.konicai.floodgate.util;
+package org.hypejet.floodgate.util;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;

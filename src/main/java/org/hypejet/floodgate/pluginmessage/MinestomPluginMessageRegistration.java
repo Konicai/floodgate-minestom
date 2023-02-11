@@ -1,6 +1,6 @@
-package me.konicai.floodgate.pluginmessage;
+package org.hypejet.floodgate.pluginmessage;
 
-import me.konicai.floodgate.FloodgateMinestom;
+import org.hypejet.floodgate.FloodgateMinestom;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.player.PlayerPluginMessageEvent;
 import org.geysermc.floodgate.pluginmessage.PluginMessageChannel;
