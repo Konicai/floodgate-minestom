@@ -5,13 +5,13 @@ import org.geysermc.floodgate.inject.CommonPlatformInjector;
 public class MinestomInjector extends CommonPlatformInjector {
 
     @Override
-    public void inject() throws Exception {
-
+    public boolean inject() {
+        return true;
     }
 
     @Override
-    public void removeInjection() throws Exception {
-
+    public boolean removeInjection() {
+        return true;
     }
 
     @Override

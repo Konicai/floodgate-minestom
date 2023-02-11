@@ -1,5 +1,8 @@
 package me.konicai.floodgate.pluginmessage;
 
+import me.konicai.floodgate.FloodgateMinestom;
+import net.minestom.server.entity.Player;
+import net.minestom.server.event.player.PlayerPluginMessageEvent;
 import org.geysermc.floodgate.pluginmessage.PluginMessageChannel;
 import org.geysermc.floodgate.pluginmessage.PluginMessageRegistration;
 
@@ -7,6 +10,12 @@ public class MinestomPluginMessageRegistration implements PluginMessageRegistrat
 
     @Override
     public void register(PluginMessageChannel pluginMessageChannel) {
-        //fixme
+        FloodgateMinestom floodgateMinestom = FloodgateMinestom.getInstance();
+        floodgateMinestom.getEventNode().addListener(PlayerPluginMessageEvent.class, event -> {
+            Player player = event.getPlayer();
+            String identifier = event.getIdentifier();
+            byte[] message = event.getMessage();
+            pluginMessageChannel.handleServerCall(message, player.getUuid(), identifier);
+        });
     }
 }
