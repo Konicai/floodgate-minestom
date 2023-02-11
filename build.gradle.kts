@@ -54,8 +54,8 @@ dependencies {
 
     annotationProcessor("org.projectlombok:lombok:1.18.22")
 
-    api("org.geysermc.floodgate:api:2.2.1-SNAPSHOT")
-    api("org.geysermc.floodgate:core:2.2.1-SNAPSHOT")
+    api("org.geysermc.floodgate:api:2.2.0-SNAPSHOT")
+    api("org.geysermc.floodgate:core:2.2.0-SNAPSHOT")
     api("com.github.Konicai", "cloud-minestom", "1.5.0-SNAPSHOT")
     api("io.netty", "netty-transport", "4.1.49.Final")
     api("io.netty", "netty-codec", "4.1.49.Final")
@@ -72,7 +72,7 @@ tasks.withType<ShadowJar> {
     dependencies {
         shadow {
             fun relocate(s1: String, s2: String) {
-                relocate(s1, "org.hypejet.floodgate.shaded." + s2)
+                relocate(s1, "org.hypejet.floodgate.shaded.$s2")
             }
         }
 

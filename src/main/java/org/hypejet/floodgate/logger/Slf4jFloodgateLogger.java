@@ -60,6 +60,12 @@ public final class Slf4jFloodgateLogger implements FloodgateLogger {
     }
 
     @Override
+    public void enableDebug() {}
+
+    @Override
+    public void disableDebug() {}
+
+    @Override
     public boolean isDebug() {
         return logger.isDebugEnabled();
     }
