@@ -3,6 +3,7 @@ package org.hypejet.floodgate;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import lombok.Getter;
+import org.geysermc.floodgate.config.FloodgateConfig;
 import org.hypejet.floodgate.module.MinestomAddonModule;
 import org.hypejet.floodgate.module.MinestomPlatformModule;
 import net.minestom.server.extensions.Extension;

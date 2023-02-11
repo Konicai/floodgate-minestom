@@ -8,6 +8,7 @@ import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import io.github.openminigameserver.cloudminestom.MinestomCommandManager;
 import lombok.RequiredArgsConstructor;
+import org.geysermc.floodgate.util.LanguageManager;
 import org.hypejet.floodgate.injector.minestom.MinestomInjector;
 import org.hypejet.floodgate.logger.Slf4jFloodgateLogger;
 import org.hypejet.floodgate.pluginmessage.MinestomPluginMessageRegistration;
@@ -39,7 +40,6 @@ public class MinestomPlatformModule extends AbstractModule {
         bind(CommandUtil.class).to(MinestomCommandUtil.class);
         bind(PlatformUtils.class).to(MinestomPlatformUtils.class);
         bind(Logger.class).toInstance(extension.getLogger());
-        bind(FloodgateLogger.class).to(Slf4jFloodgateLogger.class);
     }
 
     @Provides
@@ -124,5 +124,11 @@ public class MinestomPlatformModule extends AbstractModule {
     @Singleton
     public SkinApplier skinApplier() {
         return new MinestomSkinApplier();
+    }
+
+    @Provides
+    @Singleton
+    public FloodgateLogger floodgateLogger(Logger logger, LanguageManager languageManager) {
+        return new Slf4jFloodgateLogger(logger, languageManager);
     }
 }
