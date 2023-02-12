@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import me.konicai.floodgate.logger.Slf4jFloodgateLogger;
 import me.konicai.floodgate.util.MinestomCommandUtil;
 import me.konicai.floodgate.util.MinestomPlatformUtils;
-import org.geysermc.floodgate.util.LanguageManager;
 import me.konicai.floodgate.injector.minestom.MinestomInjector;
 import me.konicai.floodgate.pluginmessage.MinestomPluginMessageRegistration;
 import me.konicai.floodgate.pluginmessage.MinestomPluginMessageUtils;
@@ -40,6 +39,7 @@ public class MinestomPlatformModule extends AbstractModule {
         bind(CommandUtil.class).to(MinestomCommandUtil.class);
         bind(PlatformUtils.class).to(MinestomPlatformUtils.class);
         bind(Logger.class).toInstance(extension.getLogger());
+        bind(FloodgateLogger.class).to(Slf4jFloodgateLogger.class);
     }
 
     @Provides
@@ -124,11 +124,5 @@ public class MinestomPlatformModule extends AbstractModule {
     @Singleton
     public SkinApplier skinApplier() {
         return new MinestomSkinApplier();
-    }
-
-    @Provides
-    @Singleton
-    public FloodgateLogger floodgateLogger(Logger logger, LanguageManager languageManager) {
-        return new Slf4jFloodgateLogger(logger, languageManager);
     }
 }
