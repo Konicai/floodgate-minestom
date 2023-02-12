@@ -117,7 +117,7 @@ public class MinestomPlatformModule extends AbstractModule {
     @Provides
     @Singleton
     public PluginMessageRegistration pluginMessageRegister() {
-        return new MinestomPluginMessageRegistration();
+        return new MinestomPluginMessageRegistration(extension);
     }
 
     @Provides

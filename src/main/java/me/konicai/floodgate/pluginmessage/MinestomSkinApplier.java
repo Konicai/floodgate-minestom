@@ -4,14 +4,16 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;
 import net.minestom.server.entity.PlayerSkin;
 import net.minestom.server.timer.TaskSchedule;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.geysermc.floodgate.api.player.FloodgatePlayer;
 import org.geysermc.floodgate.skin.SkinApplier;
-import org.geysermc.floodgate.skin.SkinData;
+
+import static org.geysermc.floodgate.api.event.skin.SkinApplyEvent.SkinData;
 
 public class MinestomSkinApplier implements SkinApplier {
 
     @Override
-    public void applySkin(FloodgatePlayer floodgatePlayer, SkinData skinData) {
+    public void applySkin(@NonNull FloodgatePlayer floodgatePlayer, @NonNull SkinData skinData) {
         applySkin0(floodgatePlayer, skinData, true);
     }
 
@@ -27,6 +29,6 @@ public class MinestomSkinApplier implements SkinApplier {
             return;
         }
 
-        player.setSkin(new PlayerSkin(skinData.getValue(), skinData.getSignature()));
+        player.setSkin(new PlayerSkin(skinData.value(), skinData.signature()));
     }
 }
