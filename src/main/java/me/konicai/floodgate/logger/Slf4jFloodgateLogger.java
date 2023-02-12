@@ -13,7 +13,8 @@ import org.slf4j.Logger;
 
 @Singleton
 public final class Slf4jFloodgateLogger implements FloodgateLogger {
-    @Inject private Logger logger;
+    @Inject
+    private Logger logger;
     private LanguageManager languageManager;
 
     @Inject

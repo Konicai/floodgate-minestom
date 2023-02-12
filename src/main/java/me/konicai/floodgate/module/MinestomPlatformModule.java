@@ -8,13 +8,13 @@ import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import io.github.openminigameserver.cloudminestom.MinestomCommandManager;
 import lombok.RequiredArgsConstructor;
-import me.konicai.floodgate.injector.minestom.MinestomInjector;
 import me.konicai.floodgate.logger.Slf4jFloodgateLogger;
+import me.konicai.floodgate.util.MinestomCommandUtil;
+import me.konicai.floodgate.util.MinestomPlatformUtils;
+import me.konicai.floodgate.injector.minestom.MinestomInjector;
 import me.konicai.floodgate.pluginmessage.MinestomPluginMessageRegistration;
 import me.konicai.floodgate.pluginmessage.MinestomPluginMessageUtils;
 import me.konicai.floodgate.pluginmessage.MinestomSkinApplier;
-import me.konicai.floodgate.util.MinestomCommandUtil;
-import me.konicai.floodgate.util.MinestomPlatformUtils;
 import net.minestom.server.command.CommandSender;
 import net.minestom.server.event.EventListener;
 import net.minestom.server.extensions.Extension;
@@ -117,7 +117,7 @@ public class MinestomPlatformModule extends AbstractModule {
     @Provides
     @Singleton
     public PluginMessageRegistration pluginMessageRegister() {
-        return new MinestomPluginMessageRegistration();
+        return new MinestomPluginMessageRegistration(extension);
     }
 
     @Provides
