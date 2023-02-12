@@ -1,4 +1,4 @@
-package org.hypejet.floodgate.addon.data;
+package me.konicai.floodgate.addon.data;
 
 import io.netty.channel.Channel;
 import org.geysermc.floodgate.api.inject.InjectorAddon;

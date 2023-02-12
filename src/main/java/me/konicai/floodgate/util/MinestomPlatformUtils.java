@@ -1,4 +1,4 @@
-package org.hypejet.floodgate.util;
+package me.konicai.floodgate.util;
 
 import com.google.inject.Singleton;
 import net.minestom.server.MinecraftServer;

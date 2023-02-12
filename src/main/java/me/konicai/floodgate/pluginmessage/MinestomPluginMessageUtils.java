@@ -1,4 +1,4 @@
-package org.hypejet.floodgate.pluginmessage;
+package me.konicai.floodgate.pluginmessage;
 
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;

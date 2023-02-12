@@ -1,4 +1,4 @@
-package org.hypejet.floodgate.injector.minestom;
+package me.konicai.floodgate.injector.minestom;
 
 import org.geysermc.floodgate.inject.CommonPlatformInjector;
 

@@ -1,11 +1,10 @@
-package org.hypejet.floodgate;
+package me.konicai.floodgate;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import lombok.Getter;
-import org.geysermc.floodgate.config.FloodgateConfig;
-import org.hypejet.floodgate.module.MinestomAddonModule;
-import org.hypejet.floodgate.module.MinestomPlatformModule;
+import me.konicai.floodgate.module.MinestomAddonModule;
+import me.konicai.floodgate.module.MinestomPlatformModule;
 import net.minestom.server.extensions.Extension;
 import org.geysermc.floodgate.FloodgatePlatform;
 import org.geysermc.floodgate.api.logger.FloodgateLogger;

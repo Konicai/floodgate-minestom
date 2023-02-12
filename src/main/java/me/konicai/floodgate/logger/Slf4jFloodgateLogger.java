@@ -1,4 +1,4 @@
-package org.hypejet.floodgate.logger;
+package me.konicai.floodgate.logger;
 
 import static org.geysermc.floodgate.util.MessageFormatter.format;
 
