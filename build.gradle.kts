@@ -27,7 +27,7 @@ tasks {
 
     processResources {
         val build = System.getenv("BUILD_NUMBER") ?: "??"
-        val branch = System.getenv("GIT_BRANCH") ?: indraGit.branchName() ?: "local/dev";
+        val branch = System.getenv("GIT_BRANCH") ?: indraGit.branchName() ?: "local/dev"
         val commit = indraGit.commit()?.name?.substring(0, 7)
         val version = "b${build}-${branch}-${commit}"
 
@@ -57,9 +57,12 @@ dependencies {
     api("org.geysermc.floodgate:api:2.2.1-20221228.122810-7")
     api("org.geysermc.floodgate:core:2.2.1-20221228.122811-7")
     api("com.github.Konicai", "cloud-minestom", "1.5.0-SNAPSHOT")
-    api("io.netty", "netty-transport", "4.1.49.Final")
-    api("io.netty", "netty-codec", "4.1.49.Final")
 
+    // Provided by minestom dependency system
+    compileOnly("io.netty", "netty-transport", "4.1.49.Final")
+    compileOnly("io.netty", "netty-codec", "4.1.49.Final")
+
+    // Provided by the server
     compileOnly("com.github.Minestom:Minestom:-SNAPSHOT")
     compileOnly("org.apache.logging.log4j", "log4j-core", "2.11.2")
     compileOnly("org.projectlombok:lombok:1.18.24")
@@ -71,9 +74,11 @@ tasks.withType<ShadowJar> {
 
     dependencies {
         shadow {
-            fun relocate(s1: String, s2: String) {
-                relocate(s1, "me.konicai.floodgate.shaded.$s2")
+            fun simpleRelocate(pattern: String, name: String) {
+                relocate(pattern, "me.konicai.floodgate.shaded.$name")
             }
+
+            simpleRelocate("org.bstats", "bstats")
         }
 
         // todo: exclusions and relocations. instead of relocations, maybe use Minestom's external dependency system

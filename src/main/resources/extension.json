@@ -5,5 +5,14 @@
   "authors": [
     "konicai",
     "HEROOSTECH"
-  ]
+  ],
+  "externalDependencies": {
+    "repositories": [
+      {"name": "Central", "url": "https://repo1.maven.org/maven2/"}
+    ],
+    "artifacts": [
+      "io.netty:netty-transport:4.1.49.Final",
+      "io.netty:netty-codec:4.1.49.Final"
+    ]
+  }
 }
